@@ -1,0 +1,36 @@
+[debug] [2017-06-08T16:41:52.613Z] ----------------------------------------------------------------------
+[debug] [2017-06-08T16:41:52.617Z] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-06-08T16:41:52.617Z] CLI Version:  3.9.1
+[debug] [2017-06-08T16:41:52.617Z] Platform:     darwin
+[debug] [2017-06-08T16:41:52.617Z] Node Version: v6.10.3
+[debug] [2017-06-08T16:41:52.618Z] Time:         Thu Jun 08 2017 18:41:52 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:52.618Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-08T16:41:52.636Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-08T16:41:52.636Z] > authorizing via signed-in user
+[debug] [2017-06-08T16:41:52.639Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-06-08T16:41:52.639Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/n_C7lyfqqtN10__oK8dlw3S4-EvDMMeyNzXQ_MTskXQ77OMkaJ9A74LPcpyKQxTY',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Jun 08 2017 18:41:52 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:52.901Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-08T16:41:52.903Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/artadysgouvfr  
+ Thu Jun 08 2017 18:41:52 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:53.777Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-08T16:41:53.778Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/artadysgouvfr/tokens  
+ Thu Jun 08 2017 18:41:53 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:55.150Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/artedys/auth-signup/artadysgouvfr'...
+[info] 
+[debug] [2017-06-08T16:41:55.153Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/artadysgouvfr  
+ Thu Jun 08 2017 18:41:55 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:56.068Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-08T16:41:56.068Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/716658089584/clients/_:getWebAppConfig  
+ Thu Jun 08 2017 18:41:56 GMT+0200 (CEST)
+[debug] [2017-06-08T16:41:56.746Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] ✔  hosting: Local server: http://localhost:5000
+

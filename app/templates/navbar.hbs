@@ -1,0 +1,67 @@
+<style>
+
+    .navbar-right {
+        position: fixed; right: 0;
+    }
+
+</style>
+
+<nav class="navbar navbar-inverse">
+
+	<div class="container-fluide">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+
+			{{#link-to 'index' class="navbar-brand"}} ARTADYS/ARTEDYS.fr <mark>Global</mark> Neurosciences Main Page bar {{/link-to}}
+             <ul class="nav navbar-nav navbar-right">
+                 <div class="btn-group-sm" role="group" aria-label="...">
+                     
+					{{#link-to 'francais' tagName="button" class="btn primary"}}<a href="">French</a>{{/link-to}}
+					{{#link-to 'anglais' tagName="button" class="btn primary"}}<a href="">English</a>{{/link-to}}
+					             
+            </div>
+     
+             </ul>
+           
+		</div>
+
+		<div class="collapse navbar-collapse" id="main-navbar">
+			<ul class="nav navbar-nav">
+	
+				{{#link-to 'getAttitude' tagName="li"}}<a href="">ATTITUDES ANALYSIS</a>{{/link-to}}
+				{{#link-to 'getTweets' tagName="li"}}<a href="">Past Tweets</a>{{/link-to}}
+				{{#link-to 'getTweetsSent' tagName="li"}}<a href="">Tweets Sentiment</a>{{/link-to}}
+				{{#link-to 'getSent' tagName="li"}}<a href="">Sentiment Text</a>{{/link-to}}
+				{{#link-to 'getWordCount' tagName="li"}}<a href="">NLTK (natural language processing)</a>{{/link-to}}
+				{{#link-to 'watsonConcept' tagName="li"}}<a href="">Watson</a>{{/link-to}}
+				{{#link-to 'demos' tagName="li"}}<a href=""><span class="glyphicon glyphicon-star"></span><mark>Insight Global LIVE Engine</mark></a>{{/link-to}}
+				{{#link-to 'live' tagName="li"}}<a href="">Examples</a>{{/link-to}}
+				{{#link-to 'mind' tagName="li"}}<a href="">Mindshare<span class="glyphicon glyphicon-star"></span></a>{{/link-to}}
+				{{#link-to 'signup' tagName="li"}}<a href="">Sign Up</a>{{/link-to}}
+				{{#link-to 'members-area' tagName="li"}}<a href="">Members</a>{{/link-to}}
+				
+			</ul>
+
+
+
+		</div>
+	</div>
+	
+</nav>
+
+

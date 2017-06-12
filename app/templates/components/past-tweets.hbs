@@ -1,0 +1,38 @@
+<style>
+    body {
+        background-color: cadetblue;
+        
+    }
+
+</style>
+
+<style>
+    .form-control{
+        background-color: bisque;
+    }
+
+</style>
+
+<body>
+
+<h1>ARTADYS past tweets Engine</h1>
+<h1>Last 10 Tweets</h1>
+
+<form>
+  <div class="past-tweets">
+      
+    <center><label for="Keyword">Please enter a keyword (the servers are virtual, so you have to wait 2 minutes for an answer)</label></center>
+
+      <div class="col-md-4 col-md-offset-4">
+          
+          {{input class='form-control input-lg' placeholder="Enter your keyword" value=keyword}}
+        
+         <button class="btn btn-primary" {{action 'pastTweetsLookup' }}>Submit</button>
+      
+      </div>
+
+
+  </div>
+</form>
+
+</body>

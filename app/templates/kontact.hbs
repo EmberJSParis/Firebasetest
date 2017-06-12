@@ -1,0 +1,307 @@
+<style>
+    body {
+        background-color: cadetblue;
+       
+    }
+
+</style>
+
+<meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            user.getToken().then(function(accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                phoneNumber: phoneNumber,
+                photoURL: photoURL,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  ');
+            });
+          } else {
+            // User is signed out.
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('account-details').textContent = 'null';
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+
+      window.addEventListener('load', function() {
+        initApp()
+      });
+    </script>
+  
+  <body>
+    <h1>Welcome to My Awesome App</h1>
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <div id="account-details"></div>
+  </body>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+
+<div class="jumbo">
+  <div class="right tomster"></div>
+  <h2 class="text-center">Contact:</h2>
+  <div class="row">
+    <div class="col-sm-6" style="background-color:blanchedalmond;">
+     <p>
+    <center><h3>CRISTIAN BEZA</h3>
+
+    ARTADYS PARIS
+    <address>
+      145 rue de Charenton Paris<br> 75012
+      <br>
+      FRANCE
+    </address>
+    Tel: 0623530434<br>
+    Email: contact@artadys.com</center>
+  </p>
+    </div>
+    <div class="col-sm-6" style="background-color:blanchedalmond;">
+     <p>
+    <center><h3>ANKIT SINGHAL</h3>
+
+    ARTADYS  INDIA
+    <address>
+      New Delhi, India<br>
+    </address>
+    Email: ankitsinghal@outlook.in</center>
+    <br>
+    <br>
+    <br>
+  </p>
+    </div>
+  </div>
+
+  <br>
+
+
+<center><h3><mark>Entrez vos points de départ et d'arrivée / Enter your driving depart and the destination</mark></h3></center>
+
+<br>
+
+
+<style>
+        body { margin:0; padding:0; }
+        #map2 { position:fluide; top:90; bottom:60; width:100%; }
+</style>
+
+<style>
+    #map2
+    {
+    width: 100% !important;
+    height: 480px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+
+
+
+ <meta charset='utf-8' />
+    
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+<div class="container-fluide">
+
+<style>
+    #menu {
+        position: absolute;
+        background: transparent;
+        padding: 0px;
+        font-family: 'Open Sans', sans-serif;
+    }
+     #menu1 {
+        position: absolute;
+        background: transparent;
+        padding: 0px;
+        font-family: 'Open Sans', sans-serif;
+        color: blue;
+        -webkit-animation: mymove 10s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 10s infinite;
+    }
+
+    /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            50% {color: white;}
+    }
+
+/* Standard syntax */
+        @keyframes mymove {
+            50% {color: white;}
+    }
+    }
+</style>
+
+<style>
+
+    #menu4 {
+        position: absolute;
+        background: transparent;
+        padding: 140px;
+        font-family: 'Open Sans', sans-serif;
+        color: blue;
+        -webkit-animation: mymove 10s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 10s infinite;
+    }
+
+    /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            50% {color: black;}
+    }
+
+/* Standard syntax */
+        @keyframes mymove {
+            50% {color:blueviolet}
+
+/* Standard syntax */
+        @keyframes mymove {
+            50% {color: red;}
+    }
+    }
+
+</style>
+
+<div id='map2'></div>
+<br>
+<br>
+<br>
+<div id='menu'>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+    <label for='basic'>basic</label>
+    <input id='streets' type='radio' name='rtoggle' value='streets'>
+    <label for='streets'>streets</label>
+    <input id='bright' type='radio' name='rtoggle' value='bright'>
+    <label for='bright'>bright</label>
+    <input id='light' type='radio' name='rtoggle' value='light'>
+    <label for='light'>light</label>
+    <input id='dark' type='radio' name='rtoggle' value='dark'>
+    <label for='dark'>dark</label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>emotions (coming soon) - based on search topic </label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>personality (coming soon) - based on search topic </label>
+    <input id='satellite' type='radio' name='rtoggle' value='satellite'>
+    <label for='satellite'>predictions attitudes analytics (coming soon) </label>
+
+
+<div id='menu4'>
+<center><h4>ARTADYS Insight Engines and analytics connect people with ideas in motion, objects in movement, brands and empathy, intelligence and society with solutions of real life problems </h4></center>
+</div>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+var map2 = new mapboxgl.Map({
+    container: 'map2',
+    style: 'mapbox://styles/mapbox/basic-v9',
+    zoom: 13,
+    center: [2.3399, 48.8555]
+});
+
+var layerList = document.getElementById('menu');
+var layerList1 = document.getElementById('menu1');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map2.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
+}
+
+for (var i = 0; i &lt; (inputs.length); i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+
+map2.addControl(new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+}), 'top-left');
+
+</script>
+</div>
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  {{#link-to 'about' class="button"}}
+    About
+  {{/link-to}}
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Hotjar Tracking Code for https://artadys.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:466785,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</body>
+
+
+

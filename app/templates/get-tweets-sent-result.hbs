@@ -1,0 +1,206 @@
+<style>
+    body {
+        background-color: cadetblue;
+        
+                  
+
+    }
+
+</style>
+
+<body>
+<div class="row">
+    <div class="col-xs-10" id="left">
+       <left>{{tweets-sent tweetsSentLookup="tweetsSentLookup"}}</left>
+    
+    </div>
+  </div>
+
+{{#link-to 'getTweetsSent' class="btn btn-success"}}
+            Reset
+        {{/link-to}}
+<br>
+
+<div class="jumbo">
+  <div class="right tomster"></div>
+<div class="container-fluid">
+<h3></h3>
+
+    <div class="col-sm-3" style="background-color:blanchedalmond;">
+
+    <h3>Tweets Results Engine</h3>
+
+<ul>
+  {{#each model as |legislator|}}
+    <li> <b><u>Tweet</u>:</b> <p>{{legislator.tweet}}</p>
+    	 <b><u>Sentiment</u>:</b> {{legislator.polarity}} <br><br>
+       <b><u>Time </u>:</b> {{legislator.created-at}}
+	</li>
+
+	<br><br>
+
+  {{/each}}
+</ul>
+
+</div>
+    <div class="col-sm-9" style="background-color:blanchedalmond;">
+     
+     <div class="row">
+   
+    <h3>Click on image then click on keyboard arrows to move like in a video game and find the tweets</h3>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
+
+<style>
+    #map1
+    {
+    width: 100% !important;
+    height: 470px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+<div id='map1'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+var map1 = new mapboxgl.Map({
+        container: 'map1',
+        style: 'mapbox://styles/mapbox/dark-v9',
+        center: [2.3399, 48.8555],
+        zoom: 17,
+        bearing: -12,
+        pitch: 60,
+        interactive: false
+    });
+
+    // pixels the map pans when the up or down arrow is clicked
+    var deltaDistance = 100;
+
+    // degrees the map rotates when the left or right arrow is clicked
+    var deltaDegrees = 25;
+
+    function easing(t) {
+        return t * (2 - t);
+    }
+
+    map1.on('load', function() {
+        map1.getCanvas().focus();
+
+        map1.getCanvas().addEventListener('keydown', function(e) {
+            e.preventDefault();
+            if (e.which === 38) { // up
+                map1.panBy([0, -deltaDistance], {
+                    easing: easing
+                });
+            } else if (e.which === 40) { // down
+                map1.panBy([0, deltaDistance], {
+                    easing: easing
+                });
+            } else if (e.which === 37) { // left
+                map1.easeTo({
+                    bearing: map1.getBearing() - deltaDegrees,
+                    easing: easing
+                });
+            } else if (e.which === 39) { // right
+                map1.easeTo({
+                    bearing: map1.getBearing() + deltaDegrees,
+                    easing: easing
+                });
+            }
+        }, true);
+    });
+
+
+      map1.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken
+            }));
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+</div>
+<!-- Hotjar Tracking Code for https://artadys.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:466785,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</body>
+

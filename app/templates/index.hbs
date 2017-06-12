@@ -1,5 +1,844 @@
-<h2 id="title">Home Page</h2>
+<style>
+    body {
+        background-color: cadetblue;
+        overflow-y: scroll;
+    }
 
-<button {{action "generateDummyList"}} class="btn btn-info">Generate 5 random record</button>
-<button {{action "deleteAll"}} class="btn btn-danger">Delete All</button>
-<p>Size: {{model.length}}</p>
+</style>
+
+<style>
+#geocoder-container > div {
+    min-width:25%;
+    margin-left:5%;
+}
+</style>
+
+
+<style>
+    #map
+    {
+    width: 100% !important;
+    height: 470px !important;
+    position: absolute;
+    display:inline-block;
+    
+   
+    }
+</style>
+
+<style>
+    #map1
+    {
+    width: 100% !important;
+    height: 470px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+<style>
+    #map2
+    {
+    width: 100% !important;
+    height: 560px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+<style>
+     #menu3 {
+        position: absolute;
+        background: transparent;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+        color: blue;
+        -webkit-animation: mymove 10s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 10s infinite;
+    }
+
+    /* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {color: white;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {color: white;}
+}
+</style>
+
+<body>
+<!-- premier block -->
+
+
+<meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+ 
+ 
+ <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBMGt-rw9l1YQ87aEDkbQ590nHllT0uOAg",
+    authDomain: "artadysgouvfr.firebaseapp.com",
+    databaseURL: "https://artadysgouvfr.firebaseio.com",
+    projectId: "artadysgouvfr",
+    storageBucket: "artadysgouvfr.appspot.com",
+    messagingSenderId: "716658089584"
+  };
+  firebase.initializeApp(config);
+</script>
+ 
+
+ 
+ 
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.1.1/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+
+
+
+
+      var uiConfig = {
+        signInSuccessUrl: 'https://artadysgouvfr.firebaseapp.com/__/auth/handler',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: ''
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <center><h1>Welcome to ARTADYS Sign Up page</h1></center>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+
+  <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            user.getToken().then(function(accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                phoneNumber: phoneNumber,
+                photoURL: photoURL,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  ');
+            });
+          } else {
+            // User is signed out.
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('account-details').textContent = 'null';
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+
+      window.addEventListener('load', function() {
+        initApp()
+      });
+    </script>
+
+  <body>
+    <center><h1>Welcome Sign Up here</h1></center>
+
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <div id="account-details"></div>
+
+  </body>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->  
+ <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>  
+ <script>  
+  // Initialize Firebase  
+  var config = {  
+    apiKey: "AIzaSyBMGt-rw9l1YQ87aEDkbQ590nHllT0uOAg",
+    authDomain: "artadysgouvfr.firebaseapp.com",
+    databaseURL: "https://artadysgouvfr.firebaseio.com",
+    projectId: "artadysgouvfr",
+    storageBucket: "artadysgouvfr.appspot.com",
+    messagingSenderId: "716658089584"
+  };  
+  firebase.initializeApp(config);  
+ </script>  
+ <!-- The code below initializes the sign-in widget from FirebaseUI web. -->  
+ <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>  
+   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />  
+   <script type="text/javascript">  
+    var uiConfig = {  
+     signInSuccessUrl: 'loggedIn.html',  
+     signInOptions: [  
+      // Specify providers you want to offer your users.  
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,  
+      firebase.auth.EmailAuthProvider.PROVIDER_ID  
+     ],  
+     // Terms of service url can be specified and will show up in the widget.  
+     tosUrl: ''  
+    };  
+    // Initialize the FirebaseUI Widget using Firebase.  
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());  
+    // The start method will wait until the DOM is loaded.  
+    ui.start('#firebaseui-auth-container', uiConfig);  
+ </script>  
+ <!-- Include a simple background image & and title -->  
+  <div></div>  
+  <body>  
+       <h1 align="center" style="color:white;">Firebase Auth Quickstart Demo</h1>  
+        <div id="firebaseui-auth-container"></div>  
+  </body>  
+
+  <br>
+  <br>
+  <br>
+ <br>
+  <br>
+  <br>
+   <br>
+  <br>
+  <br>
+   <br>
+  <br>
+  <br>
+  <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->  
+ <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>  
+ <script>  
+  // Initialize Firebase  
+  var config = {  
+  apiKey: "AIzaSyBMGt-rw9l1YQ87aEDkbQ590nHllT0uOAg",
+    authDomain: "artadysgouvfr.firebaseapp.com",
+    databaseURL: "https://artadysgouvfr.firebaseio.com",
+    projectId: "artadysgouvfr",
+    storageBucket: "artadysgouvfr.appspot.com",
+    messagingSenderId: "716658089584"
+  };  
+  firebase.initializeApp(config);  
+ </script>  
+
+ <!-- A simple example script to add text to the page that displays the user's Display Name and Email -->  
+ <script>  
+ // Track the UID of the current user.  
+ var currentUid = null;  
+ firebase.auth().onAuthStateChanged(function(user) {  
+  // onAuthStateChanged listener triggers every time the user ID token changes.  
+  // This could happen when a new user signs in or signs out.  
+  // It could also happen when the current user ID token expires and is refreshed.  
+  if (user && user.uid != currentUid) {  
+   // Update the UI when a new user signs in.  
+   // Otherwise ignore if this is a token refresh.  
+   // Update the current user UID.  
+   currentUid = uid;  
+   document.body.innerHTML = '<h1> Congrats ' + user.displayName + ', you are done! </h1> <h2> Now get back to what you love building. </h2> <h2> Need to verify your email address or reset your password? Firebase can handle all of that for you using the email you provided: ' + user.email + '. </h2>';  
+  } else {  
+   // Sign out operation. Reset the current user UID.  
+   currentUid = null;  
+   console.log("no user signed in");  
+  }  
+ });  
+ </script>  
+ <h1>Congrats you're done! Now get back to what you love building.</h1>  
+ <br>
+ <br>
+ <br>
+
+
+
+
+
+<meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.1.1/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        callbacks: {
+          signInSuccess: function(currentUser, credential, redirectUrl) {
+            // Do something.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
+          uiShown: function() {
+            // The widget is rendered.
+            // Hide the loader.
+            document.getElementById('loader').style.display = 'none';
+          }
+        },
+        credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+        // Query parameter name for mode.
+        queryParameterForWidgetMode: 'mode',
+        // Query parameter name for sign in success url.
+        queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: '',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          {
+            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            // Whether the display name should be displayed in the Sign Up page.
+            requireDisplayName: true
+          },
+          {
+            provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+            // Invisible reCAPTCHA with image challenge and bottom left badge.
+            recaptchaParameters: {
+              type: 'image',
+              size: 'invisible',
+              badge: 'bottomleft'
+            }
+          }
+        ],
+        // Terms of service url.
+        tosUrl: ''
+      };
+
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <h1>Welcome to My Awesome App</h1>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+  </body>
+  <br>
+  <br>
+  <br>
+
+  <meta charset="UTF-8">
+    <title>ARTADYS Global Neurosciences</title>
+    <script src="https://www.gstatic.com/firebasejs/live/4.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <script src="dist/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" />
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        // Url to redirect to after a successful sign-in.
+        'signInSuccessUrl': '/',
+        'callbacks': {
+          'signInSuccess': function(user, credential, redirectUrl) {
+            if (window.opener) {
+              // The widget has been opened in a popup, so close the window
+              // and return false to not redirect the opener.
+              window.close();
+              return false;
+            } else {
+              // The widget has been used in redirect mode, so we redirect to the signInSuccessUrl.
+              return true;
+            }
+          }
+        },
+        'signInOptions': [
+          // TODO(developer): Remove the providers you don't need for your app.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          {
+            provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+            recaptchaParameters: {
+              size: getRecaptchaMode()
+            }
+          }
+        ],
+        // Terms of service url.
+        'tosUrl': 'https://www.google.com'
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded to include the FirebaseUI sign-in widget
+      // within the element corresponding to the selector specified.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+  <h1> BRAVO BEZA </h1>
+  <body>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+
+<br>
+<br>
+<br>
+<meta charset="UTF-8">
+    <title>ARTADYS Global Neurosciences</title>
+    <script src="https://www.gstatic.com/firebasejs/live/4.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="dist/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <body>
+    <div id="container">
+      <h3>ARTADYS Global Neurosciences</h3>
+      <div id="loading">Loading...</div>
+      <div id="loaded" class="hidden">
+        <div id="main">
+          <div id="user-signed-in" class="hidden">
+            <div id="user-info">
+              <div id="photo-container">
+                <img id="photo">
+              </div>
+              <div id="name"></div>
+              <div id="email"></div>
+              <div id="phone"></div>
+              <div class="clearfix"></div>
+            </div>
+            <p>
+              <input type="button" onclick="location.href='https://artadys.com';" value="Redirect to ARTADYS Main site" />
+              <button id="sign-out">Sign Out</button>
+              <button id="delete-account">Delete account</button>
+              <br>
+              <br>
+              <br>
+              <input type="button" onclick="location.href='https://signup-artadyscom.firebaseapp.com';" value="ENTER tests site" />
+              <br>
+              <br>
+              <input type="button" onclick="location.href='https://signup-artadyscom.firebaseapp.com';" value="ENTER products / services site" />
+              <br>
+              <br>
+              <br>
+
+            </p>
+          </div>
+          <div id="user-signed-out" class="hidden">
+            <h4>You are signed out.</h4>
+            <br>
+            <input type="button" onclick="location.href='https://artadys.com';" value="Redirect to ARTADYS Main site" />
+            <br>
+            <br>
+            <fieldset>
+              <legend>Configuration</legend>
+              reCAPTCHA mode for Phone Auth:
+              <label for="recaptcha-normal">
+                <input type="radio" id="recaptcha-normal" name="recaptcha" value="normal">
+                Normal
+              </label>
+              <label for="recaptcha-invisible">
+                <input type="radio" id="recaptcha-invisible" name="recaptcha" value="invisible">
+                Invisible
+              </label>
+            </fieldset>
+            <p>
+              <button id="sign-in-with-redirect">Sign In with Redirect</button>
+              <button id="sign-in-with-popup">Sign In with Popup</button>
+            </p>
+            <div id="firebaseui-spa">
+              <h5>Single Page Application mode:</h5>
+              <div id="firebaseui-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+            <div class="center" id='map'></div>
+            <br>
+            <br>
+            <br>
+            <div id='menu3'>
+                <center><h2>ARTADYS Global Neurosciences understand the human mind through neurosciences, imagination, augmented reality, artificial intelligence & face recognition tools.
+                When the subject is the human being, then google, firefox, ibm, bing, yahoo, safari, facebook and others engines give general answers.
+                ARTADYS solved this problem.</h2></center>
+            </div>
+    
+    
+
+<script>
+    
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+
+
+var videoStyle = {
+    "version": 8,
+    "sources": {
+        "satellite": {
+            "type": "raster",
+            "url": "mapbox://mapbox.satellite",
+            "tileSize": 256
+        },
+        "video": {
+            "type": "video",
+            "urls": ["https://www.mapbox.com/drone/video/drone.mp4", "https://www.mapbox.com/drone/video/drone.webm"],
+            "coordinates": [
+                [-122.51596391201019, 37.56238816766053],
+                [-122.51467645168304, 37.56410183312965],
+                [-122.51309394836426, 37.563391708549425],
+                [-122.51423120498657, 37.56161849366671]
+            ]
+        },
+    
+    },
+    "layers": [{
+        "id": "background",
+        "type": "background",
+        "paint": {
+            "background-color": "rgb(4,7,14)"
+        }
+    }, 
+    
+    {
+        "id": "satellite",
+        "type": "raster",
+        "source": "satellite"
+    }, {
+        "id": "video",
+        "type": "raster",
+        "source": "video"
+    }]
+    
+};
+
+if (!mapboxgl.supported()) {
+    alert('Your browser does not support Mapbox GL');
+} else {
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    minZoom: 14,
+    zoom: 17,
+    center: [-122.514426, 37.562984],
+    bearing: -96,
+    style: videoStyle,
+    hash: false
+});
+
+
+var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+});
+
+map.addControl(geocoder);
+
+// After the map style has loaded on the page, add a source layer and default
+// styling for a single point.
+map.on('load', function() {
+    map.addSource('single-point', {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+
+    map.addLayer({
+        "id": "point",
+        "source": "single-point",
+        "type": "circle",
+        "paint": {
+            "circle-radius": 10,
+            "circle-color": "#007cbf"
+        }
+    });
+
+    // Listen for the `geocoder.input` event that is triggered when a user
+    // makes a selection and add a symbol that matches the result.
+    geocoder.on('result', function(ev) {
+        map.getSource('single-point').setData(ev.result.geometry);
+    });
+});
+
+}
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- deuxieme block -->
+
+
+<div class="container-fluide">
+    <style>
+
+         #menu2 {
+        position: absolute;
+        background: transparent;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+        color: blue;
+        -webkit-animation: mymove 10s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 10s infinite;
+    }
+
+    /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            50% {color: white;}
+    }
+
+/* Standard syntax */
+        @keyframes mymove {
+            50% {color: white;}
+    }
+}   
+    </style>
+    <div class="center" id='map1'></div>
+<br>
+<br>
+<br>
+    <div id='menu2'>
+        
+        <center><h2>ARTADYS Global Neurosciences merge the humans by their neural activities - or by their inner dynamic functional connectivity motifs - emotions, personalities, mindshare.</h2></center>
+    </div>
+          
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+var map1 = new mapboxgl.Map({
+container: 'map1',
+style: 'mapbox://styles/mapbox/satellite-streets-v9',
+center: [2.3399, 48.8555],
+});
+
+var direction = 0, manual = false, speed = 1;
+
+// create a GeoJSON point to serve as a starting point
+var point = {
+    "type": "Point",
+    "coordinates": [2.3399, 48.8555]
+};
+
+function setPosition() {
+    point.coordinates[0] += speed * Math.sin(direction) / 100;
+    point.coordinates[1] += speed * Math.cos(direction) / 100;
+    map1.getSource('drone').setData(point);
+
+    map1.setLayoutProperty('drone', 'icon-rotate', direction * (180 / Math.PI));
+
+    if (!manual && Math.random() > 0.95) {
+        direction += (Math.random() - 0.5) / 2;
+    }
+
+    map1.setCenter(point.coordinates);
+}
+
+map1.on('load', function () {
+    // add the GeoJSON above to a new vector tile source
+    map1.addSource('drone', { type: 'geojson', data: point });
+
+    map1.addLayer({
+        "id": "drone-glow-strong",
+        "type": "circle",
+        "source": "drone",
+        "paint": {
+            "circle-radius": 18,
+            "circle-color": "#fff",
+            "circle-opacity": 0.4
+        }
+    });
+
+    map1.addLayer({
+        "id": "drone-glow",
+        "type": "circle",
+        "source": "drone",
+        "paint": {
+            "circle-radius": 40,
+            "circle-color": "#fff",
+            "circle-opacity": 0.1
+        }
+    });
+
+    map1.addLayer({
+        "id": "drone",
+        "type": "symbol",
+        "source": "drone",
+        "layout": {
+            "icon-image": "airport-15",
+            "icon-rotation-alignment": "map"
+        }
+    });
+
+    window.setInterval(setPosition, 10);
+});
+
+// Add manual control of the airplane with left and right arrow keys, just because
+document.body.addEventListener('keydown', function (e) {
+    if (e.which === 37) { // left
+        direction -= 0.1;
+        manual = true;
+    }
+    if (e.which === 39) { // right
+        direction += 0.1;
+        manual = true;
+    }
+    if (e.which === 38) { // faster
+        speed = Math.min(speed + 0.1, 10);
+        manual = true;
+        e.preventDefault();
+    }
+    if (e.which === 40) { // slower
+        speed = Math.max(speed - 0.1, 0);
+        manual = true;
+        e.preventDefault();
+    }
+}, true);
+
+
+</script>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<!-- Hotjar Tracking Code for https://artadys.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:466785,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+</body>
+
+
+

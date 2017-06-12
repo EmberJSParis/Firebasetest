@@ -6,12 +6,14 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-
+    
     firebase: {
-      apiKey: 'xyz',
-      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
-      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseio.com',
-      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+     apiKey: "AIzaSyBMGt-rw9l1YQ87aEDkbQ590nHllT0uOAg",
+    authDomain: "artadysgouvfr.firebaseapp.com",
+    databaseURL: "https://artadysgouvfr.firebaseio.com",
+    projectId: "artadysgouvfr",
+    storageBucket: "artadysgouvfr.appspot.com",
+    messagingSenderId: "716658089584"
     },
 
     contentSecurityPolicy: {

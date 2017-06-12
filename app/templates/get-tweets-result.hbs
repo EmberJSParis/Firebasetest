@@ -1,0 +1,154 @@
+<style>
+    body {
+        background-color: cadetblue;
+       
+    }
+
+</style>
+
+<body>
+  <div class="row">
+    <div class="col-xs-10" id="left">
+       <left>{{past-tweets pastTweetsLookup="pastTweetsLookup"}}</left>
+    </div>
+
+  </div>
+
+  {{#link-to 'getTweets' class="btn btn-success"}}
+                 Reset
+            {{/link-to}}
+
+<br>
+
+<br>
+
+<div class="jumbo">
+  <div class="right tomster"></div>
+<div class="container-fluid">
+  <h3></h3>
+    <div class="col-md-3" style="background-color:blanchedalmond;">
+      
+    <h3>Tweets Results Engine</h3>
+
+    <ul>
+  {{#each model as |legislator|}}
+    <li> <b><u>Tweet</u>:</b> <p>{{legislator.tweet}}</p>
+		<b><u>Time </u>:</b>{{legislator.created_at}}
+	</li>
+
+	<br><br>
+
+  {{/each}}
+</ul>
+
+
+    </div>
+    <div class="col-md-9" style="background-color:blanchedalmond;">
+     
+   
+    <h3>Location of tweets between buildings - click on image then move the coursor</h3>
+    <div class="row content">
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
+
+
+<style>
+    #map
+    {
+    width: 100% !important;
+    height: 470px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+var map = new mapboxgl.Map({
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [2.3399, 48.8555],
+    zoom: 15,
+    pitch: 45,
+    bearing: -17.6,
+    container: 'map'
+});
+
+// the 'building' layer in the mapbox-streets vector source contains building-height
+// data from OpenStreetMap.
+map.on('load', function() {
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+            'fill-extrusion-color': '#aaa',
+            'fill-extrusion-height': {
+                'type': 'identity',
+                'property': 'height'
+            },
+            'fill-extrusion-base': {
+                'type': 'identity',
+                'property': 'min_height'
+            },
+            'fill-extrusion-opacity': .6
+        }
+    });
+});
+
+    map.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken
+            }));
+
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    
+    </div>
+  </div>
+</div>
+</div>
+<!-- Hotjar Tracking Code for https://artadys.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:466785,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</body>

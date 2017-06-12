@@ -1,0 +1,24 @@
+<style>
+    body {
+        background-color: cadetblue;
+        
+    }
+
+</style>
+
+<style>
+    .form-control{
+        background-color: bisque;
+    }
+
+</style>
+
+
+<center>
+Signup here: <br>
+<br>    
+{{input type="text" value=firstName class="form-control" placeholder="First Name"}}<br>
+{{input type="text" value=lastName class="form-control" placeholder="Last Name"}}<br>
+{{input type="text" value=email class="form-control" placeholder="Email"}}<br>
+{{input type="password" value=password class="form-control" placeholder="Password"}}<br>
+<button {{action "signUp"}}> Sign Up </button></center>

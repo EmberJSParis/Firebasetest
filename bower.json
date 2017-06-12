@@ -2,6 +2,8 @@
   "name": "contacts-app",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
-    "firebase": "^3.7.8"
+    "firebase": "^3.7.8",
+    "pdfjs-dist": "1.7.331",
+    "firebaseui": "^2.0.0"
   }
 }

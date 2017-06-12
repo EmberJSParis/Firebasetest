@@ -1,0 +1,63 @@
+<h1>ARTADYS attitude analysis Engine (Emotion and Personality)</h1>
+
+<br>
+<br>
+<br>
+
+<style>
+  
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+</style>
+
+
+<style>
+    body {
+        background-color: cadetblue;
+    
+    }
+
+</style>
+
+<style>
+    .form-control{
+        background-color: bisque;
+    }
+
+</style>
+
+<body>
+<form>
+  <div class="attitude">
+    <center><label for="text">Text (enter a sentence in English only) the servers are virtual, so you have to wait 2 minutes for an answer</label><br></center>
+
+        <div class="col-md-4 col-md-offset-4">
+          {{input class='form-control input-lg' placeholder="Enter your sentence or paragraph" value=text }}
+        
+          <button class="btn btn-primary" {{action 'attitudeLookup' }}>Submit</button>
+      
+      </div>
+
+
+  </div>
+</form>
+</body>
+<br>
+<br>
+<br>
+
+
+

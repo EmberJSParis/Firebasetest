@@ -1,0 +1,268 @@
+<style>
+    body {
+        background-color: cadetblue;
+       
+    }
+
+</style>
+
+<body>
+
+<h2 class="text-center">About ARTADYS</h2>
+<br>
+<br>
+<h2 class="text-center">Bio Founders</h2>
+<h4 class="text-center"><em>Steering Committee</em></h4>
+<br>
+<br>
+  <div class="row">
+    <div class="col-sm-6" style="background-color:blanchedalmond;">
+     <p>
+    <center><a href="http://www.linkedin.com/in/cristianbeza" target="_blank">CRISTIAN BEZA</a></center>
+  </p>
+    </div>
+    <div class="col-sm-6" style="background-color:blanchedalmond;">
+     <p>
+    <center><a href="http://www.linkedin.com/in/ankitsinghalprofile" target="_blank">ANKIT SINGHAL</a></center>
+    </p>
+    </div>
+  </div>
+
+<br>
+<br>
+<h2 class="text-center">Interns</h2>
+<br>
+<br>
+  <div class="row">
+
+    <div class="col-sm-12" style="background-color:blanchedalmond;">
+     <p>
+    <center><a href="https://www.linkedin.com/in/emeline-demazeux-741148135" target="_blank">ÉMELINE DEMAZEUX</a></center>
+    </p>
+    </div>
+  </div>
+
+<br>
+<br>
+<h3 class="text-center">Applications</h3>
+
+<br>
+
+<h3 class="text-center">Surveillance of things and humans from satellites, drones or terrestrial data, in order to make predictions</h3>
+
+<br>
+
+<h3 class="text-center">ARTADYS human behavior search engines </h3>
+
+<br>
+
+<h3 class="text-center">customer intimacy - emotions, personalities, mindshare - and predictions </h3>
+
+<br>
+
+<h3 class="text-center">ARTADYS connect and merge the humans by neural activities </h3>
+
+<br>
+
+<h3 class="text-center">write scenarios about human neurosciences imagination augmented reality & artificial intelligence face recognition</h3>
+
+<br>
+
+<h3 class="text-center">psychological wars</h3>
+
+<br>
+
+<h3 class="text-center">brand valuations and market disputes</h3>
+
+<br>
+
+<h3 class="text-center">the following web sites are ARTADYS brands</h3>
+
+<br>
+
+<center><a href="https://artadys.com" target="_blank">ARTADYS.com</a></center>
+
+<br>
+
+<center><a href="https://artadys.fr" target="_blank">ARTADYS.fr</a></center>
+
+<br>
+
+<center><a href="https://artedys.fr" target="_blank">ARTEDYS.fr</a></center>
+
+<br>
+
+<center><a href="https://dynamicemotions.com" target="_blank">DYNAMICEMOTIONS.com</a></center>
+
+<br>
+
+<center><a href="https://humandatasciences.com" target="_blank">HUMANDATASCIENCES.com</a></center>
+
+<br>
+
+<center><a href="https://nortelmatracellular.com" target="_blank">Cristian BEZA à travaillé en 1993 et 1995 ici. NORTEL MATRA CELLULAR.com est maintenant ARTADYS</a></center>
+
+<br>
+
+<center><a href="https://celcore.fr" target="_blank">Cristian BEZA à travaillé en 1994 et 1996 ici aux Etats-Unis. CELCORE.fr est maintenant ARTADYS</a></center>
+
+<br>
+
+<center><a href="https://francetelecom.eu" target="_blank">Cristian BEZA à eu comme client entre 1985 jusqu'en 2006 FRANCE TELECOM.eu est maintenant ARTADYS</a></center>
+
+<br>
+
+
+<style>
+    #map
+    {
+    width: 100% !important;
+    height: 470px !important;
+    position: absolute;
+    display:inline-block;
+   
+    }
+</style>
+
+
+<h3 class="text-center">click on keyboard arrows to move the airplane bellow on the map</h3>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0YWR5cyIsImEiOiJjaXc3bmx4dHIwMDEzMnpteWd1ZDN1dHQwIn0.VSQbt4n08Oc4nUGtR5RcWQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/satellite-v9',
+    center: [-74.50, 40],
+    zoom: 3
+});
+
+var direction = 0, manual = false, speed = 1;
+
+// create a GeoJSON point to serve as a starting point
+var point = {
+    "type": "Point",
+    "coordinates": [-74.50, 40]
+};
+
+function setPosition() {
+    point.coordinates[0] += speed * Math.sin(direction) / 100;
+    point.coordinates[1] += speed * Math.cos(direction) / 100;
+    map.getSource('drone').setData(point);
+
+    map.setLayoutProperty('drone', 'icon-rotate', direction * (180 / Math.PI));
+
+    if (!manual && Math.random() > 0.95) {
+        direction += (Math.random() - 0.5) / 2;
+    }
+
+    map.setCenter(point.coordinates);
+}
+
+map.on('load', function () {
+    // add the GeoJSON above to a new vector tile source
+    map.addSource('drone', { type: 'geojson', data: point });
+
+    map.addLayer({
+        "id": "drone-glow-strong",
+        "type": "circle",
+        "source": "drone",
+        "paint": {
+            "circle-radius": 18,
+            "circle-color": "#fff",
+            "circle-opacity": 0.4
+        }
+    });
+
+    map.addLayer({
+        "id": "drone-glow",
+        "type": "circle",
+        "source": "drone",
+        "paint": {
+            "circle-radius": 40,
+            "circle-color": "#fff",
+            "circle-opacity": 0.1
+        }
+    });
+
+    map.addLayer({
+        "id": "drone",
+        "type": "symbol",
+        "source": "drone",
+        "layout": {
+            "icon-image": "airport-15",
+            "icon-rotation-alignment": "map"
+        }
+    });
+
+    window.setInterval(setPosition, 10);
+});
+
+// Add manual control of the airplane with left and right arrow keys, just because
+document.body.addEventListener('keydown', function (e) {
+    if (e.which === 37) { // left
+        direction -= 0.1;
+        manual = true;
+    }
+    if (e.which === 39) { // right
+        direction += 0.1;
+        manual = true;
+    }
+    if (e.which === 38) { // faster
+        speed = Math.min(speed + 0.1, 10);
+        manual = true;
+        e.preventDefault();
+    }
+    if (e.which === 40) { // slower
+        speed = Math.max(speed - 0.1, 0);
+        manual = true;
+        e.preventDefault();
+    }
+}, true);
+
+
+</script>
+
+<br>
+<br>
+<br>
+
+<!-- Hotjar Tracking Code for https://artadys.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:466785,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+</body>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
